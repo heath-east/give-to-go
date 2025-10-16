@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Give to Go — Lindsay Lane East</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#1f2326;
+      --card:#26292c;
+      --accent:#f6b352;
+      --muted:#9aa0a6;
+      --white:#ffffff;
+    }
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg) 0%, #141517 100%);
+      color:var(--white);
+    }
+    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px 24px;box-sizing:border-box;}
+    .card{width:100%;max-width:980px;background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:20px;padding:40px;box-sizing:border-box;box-shadow: 0 10px 30px rgba(4,6,8,0.6);border: 1px solid rgba(255,255,255,0.04);display:grid;grid-template-columns: 1fr 360px;gap:32px;align-items:center;}
+    .left{display:flex;flex-direction:column;gap:18px;}
+    .brand-row{display:flex;align-items:center;gap:16px;}
+    .logo{width:72px;height:72px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:transparent;}
+    .logo img{max-width:100%;height:auto;display:block;}
+    .title{font-weight:700;letter-spacing:0.4px;font-size:18px;color:var(--muted);}
+    .heading{font-family: "Playfair Display", serif;font-size:34px;margin:0;line-height:1;font-weight:700;color:var(--white);}
+    .sub{color:var(--muted);font-size:15px;max-width:60ch;}
+    .counter-wrap{display:flex;align-items:baseline;gap:16px;margin-top:6px;}
+    .currency{font-size:28px;font-weight:700;color:var(--accent);}
+    .counter{font-size:64px;font-weight:900;letter-spacing:-1px;font-family: "Inter", sans-serif;color:var(--white);}
+    .right{display:flex;flex-direction:column;align-items:stretch;gap:18px;background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);}
+    .cta{display:flex;gap:12px;align-items:center;justify-content:flex-start;}
+    .give-btn{background: linear-gradient(90deg, var(--accent), #f8d08e);color:#111;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow: 0 6px 18px rgba(246,179,82,0.18);border:none;cursor:pointer;}
+    .muted-box{background: rgba(255,255,255,0.02);padding:14px;border-radius:10px;color:var(--muted);font-size:14px;border:1px solid rgba(255,255,255,0.02);}
+    .notes{color:var(--muted);font-size:13px;line-height:1.4;}
+    .confetti-piece{position:fixed;width:10px;height:14px;opacity:0;pointer-events:none;transform-origin:center;z-index:60;}
+    @media (max-width:880px){.card{grid-template-columns: 1fr;padding:28px;gap:20px;}.counter{font-size:48px;}.currency{font-size:20px;}}
+    @media (max-width:420px){.heading{font-size:28px;}.counter{font-size:40px;}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="left">
+        <div class="brand-row">
+          <div class="logo"><img src="New Logo.png" alt="Lindsay Lane East logo"></div>
+          <div><div class="title">GIVE TO GO OFFERING</div><h1 class="heading">Lindsay Lane East — Give to Go</h1></div>
+        </div>
+        <p class="sub">Thanks for your generosity! Below is our current Give to Go total.</p>
+        <div class="counter-wrap"><div class="currency">$</div><div id="counter" class="counter">0</div></div>
+      </div>
+      <aside class="right">
+        <div class="muted-box"><strong style="color:white;">Current Total</strong></div>
+        <div class="cta"><a class="give-btn" href="https://www.shelbygiving.com/app/giving/lindsaylane" target="_blank">Give Now</a></div>
+      </aside>
+    </div>
+  </div>
+  <script>
+    const CURRENT_TOTAL = 44005;
+    function formatNumber(n){return n.toLocaleString(undefined);}
+    function animateCounter(el,target,duration){const start=0,change=target-start,startTime=performance.now();function easeOutCubic(t){return 1-Math.pow(1-t,3);}function step(now){const t=Math.min(1,(now-startTime)/duration);el.textContent=formatNumber(Math.round(start+change*easeOutCubic(t)));if(t<1)requestAnimationFrame(step);}requestAnimationFrame(step);}document.addEventListener('DOMContentLoaded',()=>{animateCounter(document.getElementById('counter'),CURRENT_TOTAL,1700);});
+  </script>
+</body>
+</html>
