@@ -61,7 +61,7 @@
     </div>
   </div>
   <script>
-    const CURRENT_TOTAL = 44405;
+    const CURRENT_TOTAL = 46200;
     function formatNumber(n){return n.toLocaleString(undefined);}
     function animateCounter(el,target,duration){const start=0,change=target-start,startTime=performance.now();function easeOutCubic(t){return 1-Math.pow(1-t,3);}function step(now){const t=Math.min(1,(now-startTime)/duration);el.textContent=formatNumber(Math.round(start+change*easeOutCubic(t)));if(t<1)requestAnimationFrame(step);}requestAnimationFrame(step);}document.addEventListener('DOMContentLoaded',()=>{animateCounter(document.getElementById('counter'),CURRENT_TOTAL,1700);});
   </script>
